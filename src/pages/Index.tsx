@@ -15,20 +15,21 @@ const slides = [
     id: 1,
     section: "Основное содержание",
     label: "02",
-    title: "Ключевые тезисы",
-    subtitle: "Основные идеи и положения",
+    title: "Образ главного героя",
+    subtitle: "Рассказ «Судьба человека»",
+    image: "https://cdn.poehali.dev/files/ec31999d-d35b-45d2-a1f0-db2ace06582c.jpg",
     content: [
       {
-        heading: "Первый тезис",
-        text: "Здесь размещается описание первого ключевого положения вашей презентации. Расскажите, что важно знать аудитории.",
+        heading: "Андрей Соколов",
+        text: "Советский человек, мирный труженик, ненавидящий войну, отнявшую у него всю семью, счастье, надежду на лучшее.",
       },
       {
-        heading: "Второй тезис",
-        text: "Подробное раскрытие второго важного аспекта. Добавьте факты, цифры или примеры для убедительности.",
+        heading: "Человечность",
+        text: "Оставшись одиноким, Соколов не утратил человечность — он смог разглядеть и пригреть около себя бездомного мальчика.",
       },
       {
-        heading: "Третий тезис",
-        text: "Завершающий аргумент раздела. Свяжите его с общей идеей и подготовьте аудиторию к выводам.",
+        heading: "Взгляд Шолохова",
+        text: "Писатель заканчивает рассказ уверенностью в том, что рядом с Андреем поднимется новый человек, готовый преодолеть любые испытания судьбы.",
       },
     ],
     isCover: false,
@@ -152,7 +153,7 @@ export default function Index() {
             </div>
           ) : (
             <div className="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
-              {/* Left: section label */}
+              {/* Left: section label + optional image */}
               <div className="flex flex-col gap-4 pt-2">
                 <span className="text-xs tracking-[0.25em] uppercase text-[#888480]">
                   {slide.section}
@@ -165,6 +166,16 @@ export default function Index() {
                   {slide.title}
                 </h2>
                 <p className="text-sm text-[#888480] mt-1">{slide.subtitle}</p>
+                {"image" in slide && slide.image && (
+                  <div className="mt-4 overflow-hidden rounded-sm border border-[#E0DDD6]">
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className="w-full object-cover grayscale"
+                      style={{ maxHeight: "220px" }}
+                    />
+                  </div>
+                )}
               </div>
 
               {/* Right: content list */}
